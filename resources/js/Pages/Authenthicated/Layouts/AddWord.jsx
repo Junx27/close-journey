@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CreateWord from "./CreateWord";
 import PopOver from "@/Components/PopOver";
 import MyContext from "@/Components/CreateContex";
@@ -6,7 +6,16 @@ import _ from "lodash";
 
 function AddWord({ auth }) {
     const [openAddWord, setOpenAddWord] = useState(false);
-    const { dataWord, setCategory, setMyWords } = useContext(MyContext);
+    const { setCategory, setMyWords } = useContext(MyContext);
+    const [dataWord, setDataWord] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get("/api/myWords");
+            setDataWord(response.data);
+        };
+        fetchData();
+    }, []);
+    console.log(dataWord);
 
     //fungsi untuk memasukan kategori
     const handleAddWord = (categoryInput) => {
@@ -21,11 +30,13 @@ function AddWord({ auth }) {
     };
     //fungsi untuk mengambil panjang data
     const countWordsByCategory = (category) => {
-        return _.filter(
-            dataWord,
-            (word) =>
-                word.user_id === auth.user.id && word.category === category
-        ).length;
+        if (!category || !dataWord) {
+            return 0;
+        }
+
+        return _.filter(dataWord, (word) => {
+            return word.category === category;
+        }).length;
     };
     //implementasi filter dan mengambil panjang data
     const verbs = countWordsByCategory("verbs");
@@ -183,7 +194,7 @@ function AddWord({ auth }) {
                             <img
                                 src="/assets/login.png"
                                 alt=""
-                                className="hidden inset-0 absolute w-72 h-auto -top-32 object-cover ml-9"
+                                className="inset-0 absolute w-72 h-auto -top-32 object-cover ml-9"
                             />
                             <div
                                 className="flex justify-end cursor-pointer relative -top-10 -right-10"

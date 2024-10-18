@@ -44,7 +44,8 @@ Meskipun keterbatasan akan fitur sistem ini diharapkan dapat membantu dalam memp
 
 ## Preview
 
-Dapat mengunjungi [Close Journey](https://junxwebdev.my.id/)
+-   [Close Journey](https://junxwebdev.my.id/)
+-   [Figma](https://www.figma.com/design/gM5T0ylnnPx9W1HN8IcH4V/Close-Journey?node-id=0-1&t=bVK5ZHTZ1ExsiTD1-1)
 
 ## Salam
 

@@ -35,7 +35,7 @@ function NavbarMobile({ auth }) {
         },
     ];
     return (
-        <div className="absolute bottom-0 bg-white w-full py-4 px-5 md:px-20 rounded-t-xl">
+        <div className="fixed bottom-0 bg-white w-full py-4 px-5 md:px-20 rounded-t-xl">
             <div
                 className="flex justify-between gap-5"
                 onClick={() => setGetId(auth.user.id)}

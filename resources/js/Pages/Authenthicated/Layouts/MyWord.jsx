@@ -16,20 +16,15 @@ function MyWord({ auth }) {
 
     //mengambil data pada database
     useEffect(() => {
-        if (getId !== null) {
-            const fetchData = async () => {
-                const response = await axios.get("/api/words");
-                setDataWord(response.data);
-            };
-            fetchData();
-        }
-    }, [getId]);
+        const fetchData = async () => {
+            const response = await axios.get("/api/myWords");
+            setDataWord(response.data);
+        };
+        fetchData();
+    }, []);
     //filter data yang telah didapatkan
     const filteredWords = _.filter(dataWord, (word) => {
-        return (
-            word.user_id === getId &&
-            (category === null || word.category === category)
-        );
+        return category === null || word.category === category;
     });
     //fungsi untuk memberikan like dan update count like
     const handleLike = (id) => {

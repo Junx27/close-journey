@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CreateWord from "./CreateWord";
 import PopOver from "@/Components/PopOver";
 import MyContext from "@/Components/CreateContex";
@@ -7,7 +7,15 @@ import _ from "lodash";
 
 function MobileMenu({ auth }) {
     const [openAddWord, setOpenAddWord] = useState(false);
-    const { dataWord, setCategory } = useContext(MyContext);
+    const { setCategory } = useContext(MyContext);
+    const [dataWord, setDataWord] = useState([]);
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await axios.get("/api/myWords");
+            setDataWord(response.data);
+        };
+        fetchData();
+    }, []);
 
     //fungsi untuk menambahkan data
     const handleAddWord = (categoryInput) => {

@@ -16,6 +16,13 @@ class WordController extends Controller
         $data = DataWord::with("user:id,name,image")->orderBy('created_at', 'desc')->get();
         return response()->json($data);
     }
+    public function myWord()
+    {
+        $userId = Auth::id();
+
+        $data = DataWord::with("user:id,name,image")->where('user_id', $userId)->orderBy('created_at', 'desc')->get();
+        return response()->json($data);
+    }
     public function show(String $id)
     {
         $data = DataWord::with("user:id,name,image")->findOrFail($id);

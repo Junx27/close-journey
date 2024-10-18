@@ -14,7 +14,7 @@ function Dashboard({ auth }) {
         setGetId(auth.user.id);
     };
     return (
-        <div className="fixed w-full overflow-auto">
+        <div className="fixed w-full h-screen overflow-auto">
             <Head title="Dashboard" />
             <div className="flex mx-5 md:mx-10">
                 <div className="w-full">

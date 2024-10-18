@@ -7,14 +7,6 @@ export const MyProvider = ({ children }) => {
     const [category, setCategory] = useState("");
     const [valueName, setValueName] = useState("");
     const [myWords, setMyWords] = useState("feed students");
-    const [dataWord, setDataWord] = useState([]);
-    useEffect(() => {
-        const fetchData = async () => {
-            const response = await axios.get("/api/words");
-            setDataWord(response.data);
-        };
-        fetchData();
-    }, []);
 
     return (
         <MyContext.Provider
@@ -27,7 +19,6 @@ export const MyProvider = ({ children }) => {
                 setMyWords,
                 valueName,
                 setValueName,
-                dataWord,
             }}
         >
             {children}
