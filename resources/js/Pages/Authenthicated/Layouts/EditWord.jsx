@@ -49,11 +49,11 @@ function EditWord({ idWord }) {
     };
 
     return (
-        <div className="bg-[#746BF9] p-10 rounded-xl  w-[340px] md:w-96 relative pb-12">
+        <div className="bg-[#746BF9] p-6 md:p-10 rounded-xl  w-[340px] md:w-96 relative md:pb-12">
             <img
                 src="/assets/login.png"
                 alt=""
-                className="inset-0 absolute w-72 h-auto -top-32 object-cover ml-9"
+                className="inset-0 absolute w-64 md:w-72 h-auto -top-32 object-cover ml-9 md:ml-9"
             />
             <div
                 className="flex justify-end cursor-pointer relative -top-10 -right-10 md:-top-12 md:-right-12"
@@ -61,8 +61,8 @@ function EditWord({ idWord }) {
             >
                 <img src="/assets/close.png" alt="" className="w-10 h-10" />
             </div>
-            <form onSubmit={submit} className="pt-10">
-                <div className="mb-10 mt-5">
+            <form onSubmit={submit} className="pt-5 md:pt-10">
+                <div className="mb-5 md:mb-10 mt-5">
                     <select
                         name="category"
                         value={data.category}
@@ -77,7 +77,7 @@ function EditWord({ idWord }) {
                         ))}
                     </select>
                 </div>
-                <div className="mb-10 mt-5">
+                <div className="mb-5 md:mb-10 mt-5">
                     <InputField
                         name="word"
                         value={data.word}
@@ -85,14 +85,14 @@ function EditWord({ idWord }) {
                         placeholder={"Enter the word"}
                     />
                 </div>
-                <div className="my-10 relative">
+                <div className="my-5 md:my-10 relative">
                     <TextArea
                         name="sentence"
                         value={data.sentence}
                         onChange={(e) => setData("sentence", e.target.value)}
                         placeholder={"Enter the sentence"}
                     />
-                    <div className="mt-10 flex justify-center">
+                    <div className="mt-5 md:mt-10 flex justify-center">
                         <ButtonSubmit>submit</ButtonSubmit>
                     </div>
                 </div>

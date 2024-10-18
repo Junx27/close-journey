@@ -143,7 +143,7 @@ function MyWord({ auth }) {
             </div>
             {openEdit && (
                 <PopOver>
-                    <div className="mt-12">
+                    <div className="mt-5 md:mt-12">
                         <EditWord idWord={idWord} />
                     </div>
                 </PopOver>
