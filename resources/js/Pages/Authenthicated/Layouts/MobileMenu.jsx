@@ -24,11 +24,13 @@ function MobileMenu({ auth }) {
     };
     //fungsi untuk mengambil panjang data
     const countWordsByCategory = (category) => {
-        return _.filter(
-            dataWord,
-            (word) =>
-                word.user_id === auth.user.id && word.category === category
-        ).length;
+        if (!category || !dataWord) {
+            return 0;
+        }
+
+        return _.filter(dataWord, (word) => {
+            return word.category === category;
+        }).length;
     };
     //implementasi filter dan mengambil panjang data
     const verbs = countWordsByCategory("verbs");

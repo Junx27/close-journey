@@ -16,15 +16,11 @@ function MyWordMobile({ auth }) {
     //mengambil data pada database
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get("/api/words");
+            const response = await axios.get("/api/myWords");
             setDataWord(response.data);
         };
         fetchData();
     }, []);
-    //filter berdasarkan id pengguna
-    const filteredWords = _.filter(dataWord, (word) => {
-        return word.user_id === auth.user.id;
-    });
 
     //fungsi untuk mengedit
     const handleEditWord = (id) => {
@@ -44,7 +40,7 @@ function MyWordMobile({ auth }) {
                 </h1>
             </div>
             <div className="flex flex-col gap-5 md:gap-10 mt-5 md:mt-10 px-5">
-                {filteredWords.map((word) => (
+                {dataWord.map((word) => (
                     <div key={word.id}>
                         <div className="flex gap-5 md:gap-10 bg-[#42C3FC] p-5 rounded-xl md:rounded-3xl items-center">
                             <img
